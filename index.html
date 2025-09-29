@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Universidad de Pamplona</title>
+  <style>
+    /* RESET BÁSICO */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 16px;
+    }
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #333;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    /* enlaces */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    a:hover {
+      color: #800;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* CABECERA SUPERIOR (barra roja) */
+    .top-header {
+      background: #a50000;
+      color: #fff;
+      padding: 6px 15px;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-header a {
+      color: #fff;
+      margin-left: 15px;
+      font-weight: 500;
+    }
+    .top-header a:hover {
+      color: #ffdede;
+    }
+
+    /* CABECERA PRINCIPAL */
+    .main-header {
+      background: #fff;
+      padding: 15px 20px;
+      border-bottom: 2px solid #a50000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .main-header .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .main-header .logo img {
+      max-height: 85px;
+    }
+    .main-header .titulo {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #a50000;
+      line-height: 1.3;
+    }
+    .main-header .titulo span {
+      font-size: 0.7rem;
+      color: #444;
+      font-weight: normal;
+      display: block;
+      margin-top: 4px;
+    }
+    .main-header .acreditacion {
+      text-align: right;
+      font-size: 0.9rem;
+      color: #a50000;
+    }
+    .main-header .acreditacion .numero {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin: 6px 0;
+      display: block;
+    }
+
+    /* NAVEGACIÓN PRINCIPAL */
+    nav.main-nav {
+      background: #f9f9f9;
+      border-top: 1px solid #ddd;
+      border-bottom: 2px solid #a50000;
+    }
+    nav.main-nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+    nav.main-nav li a {
+      padding: 12px 6px;
+      font-weight: 600;
+      color: #333;
+      transition: 0.3s;
+    }
+    nav.main-nav li a:hover {
+      color: #a50000;
+      border-bottom: 2px solid #a50000;
+    }
+
+    /* SLIDER */
+    .slider {
+      position: relative;
+      overflow: hidden;
+    }
+    .slider img {
+      width: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      display: block;
+    }
+    .slider .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to top, rgba(165,0,0,0.9), rgba(165,0,0,0.2));
+      color: #fff;
+      padding: 20px;
+    }
+    .slider .overlay h2 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+    .slider .overlay p {
+      font-size: 1rem;
+    }
+
+    /* CONTENIDO PRINCIPAL (3 columnas) */
+    .main-content {
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      width: 90%;
+      max-width: 1200px;
+    }
+    .box {
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    .box h3 {
+      margin-bottom: 15px;
+      color: #a50000;
+      font-size: 1.3rem;
+    }
+
+    /* Noticias */
+    .news-list .news-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+    .news-list .news-item img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+    .news-list .news-item p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* Eventos */
+    .events-list p {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .events-list strong {
+      color: #a50000;
+    }
+
+    /* Enlaces */
+    .links-list ul li {
+      margin-bottom: 10px;
+    }
+    .links-list ul li a {
+      font-size: 0.95rem;
+      color: #333;
+    }
+    .links-list ul li a:hover {
+      color: #a50000;
+      text-decoration: underline;
+    }
+
+    /* PIE DE PÁGINA */
+    footer {
+      background: #a50000;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+    footer .contacto {
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .main-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      .main-header .acreditacion {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabecera superior -->
+  <div class="top-header">
+    <div>Actualizado: 26/09/2025 05:48 PM | Domingo 28 de Septiembre de 2025</div>
+    <div>
+      <a href="#">Atención al ciudadano</a>
+      <a href="#">Transparencia</a>
+      <a href="#">Línea atención</a>
+    </div>
+  </div>
+
+  <!-- Cabecera principal -->
+  <div class="main-header">
+    <div class="logo">
+      <img src="img/unipamplona.png" alt="Escudo Unipamplona">
+      <div class="titulo">
+        UNIVERSIDAD DE <br> PAMPLONA
+        <span>Formando nuevas generaciones con sello de excelencia comprometidos con la transformación social de las regiones y un país en paz</span>
+      </div>
+    </div>
+    <div class="acreditacion">
+      Acreditada Institucionalmente en Alta Calidad<br>
+      <span class="numero">24</span>
+      Programas Acreditados
+    </div>
+  </div>
+
+  <!-- Menú -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#">Aspirantes</a></li>
+      <li><a href="#">Universidad</a></li>
+      <li><a href="#">Rectoría</a></li>
+      <li><a href="#">Organismos</a></li>
+      <li><a href="#">Acreditación</a></li>
+      <li><a href="#">Dependencias</a></li>
+      <li><a href="#">SIG</a></li>
+      <li><a href="#">Concursos</a></li>
+    </ul>
+  </nav>
+
+  <!-- Slider -->
+  <div class="slider">
+    <img src="img/index_doctorados.jpg" alt="Noticia Destacada">
+    <div class="overlay">
+      <h2>Inscripciones abiertas - NUEVOS DOCTORADOS 2025 - 2</h2>
+      <p>Postúlate desde el 29 de agosto al 14 de septiembre</p>
+    </div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="main-content">
+    <div class="box news-list">
+      <h3>Más noticias</h3>
+      <div class="news-item">
+        <img src="img/noti1.png" alt="Noticia">
+        <p>Universidad de Pamplona inicia entrenamiento en resiliencia para estudiantes de pregrado</p>
+      </div>
+      <div class="news-item">
+        <img src="img/noti2.png" alt="Noticia">
+        <p>Comunidad universitaria de la Facultad de Salud en la sede Villa del Rosario-Cúcuta goza de nuevos entornos</p>
+      </div>
+    </div>
+
+    <div class="box events-list">
+      <h3>Está pasando</h3>
+      <p><strong>2025-II</strong> Vacacionales 2025</p>
+      <p><strong>2025-II</strong> Calendario académico pregrado presencial de la sede Pamplona (excepto Medicina)</p>
+      <p><strong>2025-II</strong> Calendario académico pregrado presencial de la sede Villa del Rosario – Cúcuta</p>
+      <p><strong>2025-II</strong> Calendario académico pregrado modalidad a Distancia</p>
+      <p><strong>2024</strong> Listado de aspirantes habilitados para continuar en el proceso</p>
+    </div>
+
+    <div class="box links-list">
+      <h3>Enlaces</h3>
+      <ul>
+        <li><a href="#">Pagos en línea</a></li>
+        <li><a href="#">Construcción Participativa Plan de Desarrollo 2021-2030</a></li>
+        <li><a href="#">Chat en línea</a></li>
+        <li><a href="#">Sala de prensa</a></li>
+        <li><a href="#">Graduados</a></li>
+        <li><a href="#">1er. Festival de Cine Unipamplona</a></li>
+        <li><a href="#">Glosario de términos</a></li>
+        <li><a href="#">Imagen institucional</a></li>
+        <li><a href="#">Diplomado de Actualización en Gestión Administrativa, Fiscal y Disciplinaria</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="contacto">
+      Horario de atención: Lunes a viernes, 08:00 a. m. a 12:00 m. - 02:00 a 06:00 p. m.<br>
+      Sede Principal Pamplona: Km 1 Vía Bucaramanga, Pamplona - Norte de Santander<br>
+      Teléfono: (+57) 3153429495 - 3160244475 | Sede Villa del Rosario: Autopista Internacional Vía Los Álamos, Villa Antigua, Villa del Rosario - Norte de Santander
+    </div>
+    <div>
+      Universidad de Pamplona © 2025 – Todos los derechos reservados | Institución de Educación sujeta a inspección y vigilancia del Ministerio de Educación Nacional
+    </div>
+  </footer>
+</body>
+</html>
